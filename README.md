@@ -17,7 +17,7 @@ Explore and Import *Metopio* Powered Health Atlases.
 [Metopio](https://metopio.com/) helps many public health departments
 build curated data platforms. These data platforms are a convenient way
 for community members and researchers to explore and download public
-health data. With the same spirit in mind, this package aim to make
+health data. With the same spirit in mind, this package aims to make
 interfacing with these data portals within R more **painless** and
 **reproducible**.
 
@@ -29,9 +29,14 @@ Examples of Metopio health atlases include:
 
 - Chicago Health Atlas: <https://chicagohealthatlas.org/>  
 - Cook County Health Atlas: <https://cookcountyhealthatlas.org/>  
+- University of Illinois Cancer Center Data Hub:
+  <https://uicc.metop.io/>  
 - Idaho Oregon Community Health Atlas:
   <https://idahooregoncommunityhealthatlas.org/>  
 - Northern Kentucky Atlas: <https://atlas.northernkentuckyusa.com/>
+- Allen County Health Atlas: <https://allencountyhealthatlas.org/>
+- Kane County Health Atlas: <https://kanehealthatlas.org/>
+- Contra Costa Health Atlas: <https://atlas.cchealth.org/>
 
 ## Installation
 
@@ -42,11 +47,10 @@ install.packages("healthatlas")
 ```
 
 Or, you can install the development version of healthatlas from
-[GitHub](https://github.com/ryanzomorrodi/healthatlas) with:
+[R-universe](https://ryanzomorrodi.r-universe.dev/healthatlas) with:
 
 ``` r
-# install.packages("pak")
-pak::pkg_install("ryanzomorrodi/healthatlas")
+install.packages("healthatlas", repos = c("https://ryanzomorrodi.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
 ## Usage
@@ -70,7 +74,7 @@ functions.
 
 ``` r
 ha_topics(progress = FALSE)
-#> # A tibble: 403 × 7
+#> # A tibble: 407 × 7
 #>    topic_name           topic_key topic_description topic_units subcategory_name
 #>    <chr>                <chr>     <chr>             <chr>       <chr>           
 #>  1 9th grade education… EDA       Residents 25 or … % of resid… Education       
@@ -83,7 +87,7 @@ ha_topics(progress = FALSE)
 #>  8 Adult binge drinking HCSBD     Number of adults… count of a… Alcohol & Drug …
 #>  9 Adult binge drinkin… HCSBDP    Percent of adult… % of adults Alcohol & Drug …
 #> 10 Adult diabetes       HCSDIA    Number of adults… count of a… Chronic Disease 
-#> # ℹ 393 more rows
+#> # ℹ 397 more rows
 #> # ℹ 2 more variables: subcategory_key <chr>, category_name <chr>
 ```
 
@@ -94,20 +98,20 @@ the data desired.
 
 ``` r
 ha_coverage("EDA", progress = FALSE)
-#> # A tibble: 132 × 7
+#> # A tibble: 152 × 7
 #>    topic_key population_key population_name population_grouping period_key
 #>    <chr>     <chr>          <chr>           <chr>               <chr>     
-#>  1 EDA       ""             Full population ""                  2018-2022 
-#>  2 EDA       ""             Full population ""                  2022      
-#>  3 EDA       ""             Full population ""                  2017-2021 
-#>  4 EDA       ""             Full population ""                  2021      
-#>  5 EDA       ""             Full population ""                  2016-2020 
-#>  6 EDA       ""             Full population ""                  2015-2019 
-#>  7 EDA       ""             Full population ""                  2019      
-#>  8 EDA       ""             Full population ""                  2014-2018 
-#>  9 EDA       ""             Full population ""                  2018      
-#> 10 EDA       ""             Full population ""                  2013-2017 
-#> # ℹ 122 more rows
+#>  1 EDA       ""             Full population ""                  2006-2010 
+#>  2 EDA       ""             Full population ""                  2007-2011 
+#>  3 EDA       ""             Full population ""                  2019-2023 
+#>  4 EDA       ""             Full population ""                  2011-2015 
+#>  5 EDA       "F"            Female          "Sex"               2019-2023 
+#>  6 EDA       ""             Full population ""                  2009-2013 
+#>  7 EDA       ""             Full population ""                  2014-2018 
+#>  8 EDA       ""             Full population ""                  2013-2017 
+#>  9 EDA       ""             Full population ""                  2016-2020 
+#> 10 EDA       ""             Full population ""                  2010-2014 
+#> # ℹ 142 more rows
 #> # ℹ 2 more variables: layer_key <chr>, layer_name <chr>
 ```
 
@@ -151,20 +155,29 @@ layer
 #> Dimension:     XY
 #> Bounding box:  xmin: -87.94011 ymin: 41.64454 xmax: -87.52419 ymax: 42.02305
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 77 × 7
-#>    layer_key    geoid     name  population state notes                  geometry
-#>  * <chr>        <chr>     <chr>      <int> <chr> <chr>        <MULTIPOLYGON [°]>
-#>  1 neighborhood 1714000-6 Lake…     103048 IL    Nort… (((-87.64102 41.95481, -…
-#>  2 neighborhood 1714000-8 Near…      97789 IL    Cent… (((-87.62446 41.91158, -…
-#>  3 neighborhood 1714000-… Aust…      96753 IL    West… (((-87.78942 41.91752, -…
-#>  4 neighborhood 1714000-… West…      87942 IL    West… (((-87.65686 41.91079, -…
-#>  5 neighborhood 1714000-… Belm…      78151 IL    Nort… (((-87.74134 41.91391, -…
-#>  6 neighborhood 1714000-2 West…      77139 IL    Far … (((-87.68465 42.01949, -…
-#>  7 neighborhood 1714000-… Loga…      71742 IL    Nort… (((-87.68284 41.93224, -…
-#>  8 neighborhood 1714000-… Sout…      71402 IL    West… (((-87.6874 41.83481, -8…
-#>  9 neighborhood 1714000-7 Linc…      70425 IL    Nort… (((-87.63182 41.93259, -…
-#> 10 neighborhood 1714000-… Near…      67817 IL    West… (((-87.63759 41.88624, -…
-#> # ℹ 67 more rows
+#> First 10 features:
+#>         geoid    layer_key                         name population state
+#> 1   1714000-1 neighborhood    Rogers Park (Chicago, IL)      55454    IL
+#> 2  1714000-10 neighborhood   Norwood Park (Chicago, IL)      41069    IL
+#> 3  1714000-11 neighborhood Jefferson Park (Chicago, IL)      26201    IL
+#> 4  1714000-12 neighborhood    Forest Glen (Chicago, IL)      19579    IL
+#> 5  1714000-13 neighborhood     North Park (Chicago, IL)      17522    IL
+#> 6  1714000-14 neighborhood    Albany Park (Chicago, IL)      48549    IL
+#> 7  1714000-15 neighborhood   Portage Park (Chicago, IL)      63038    IL
+#> 8  1714000-16 neighborhood    Irving Park (Chicago, IL)      51911    IL
+#> 9  1714000-17 neighborhood        Dunning (Chicago, IL)      43120    IL
+#> 10 1714000-18 neighborhood      Montclare (Chicago, IL)      14412    IL
+#>             notes                       geometry
+#> 1  Far North Side MULTIPOLYGON (((-87.65456 4...
+#> 2  Far North Side MULTIPOLYGON (((-87.78002 4...
+#> 3  Far North Side MULTIPOLYGON (((-87.75264 4...
+#> 4  Far North Side MULTIPOLYGON (((-87.72642 4...
+#> 5  Far North Side MULTIPOLYGON (((-87.7069 41...
+#> 6  Far North Side MULTIPOLYGON (((-87.70404 4...
+#> 7  Northwest Side MULTIPOLYGON (((-87.75264 4...
+#> 8  Northwest Side MULTIPOLYGON (((-87.69475 4...
+#> 9  Northwest Side MULTIPOLYGON (((-87.77621 4...
+#> 10 Northwest Side MULTIPOLYGON (((-87.78942 4...
 ```
 
 Now we can make our map!
@@ -186,4 +199,4 @@ ggplot(map_data) +
   theme_minimal()
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />

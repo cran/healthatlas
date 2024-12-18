@@ -10,17 +10,14 @@
 #' invalid combinations.
 #' 
 #' @param topic_key  Character string or vector of 
-#' Unique IDs specifying topics.
+#' Unique IDs(s) specifying topic(s).
 #' @param population_key Character string or vector of 
-#' Unique IDs for population stratifications.
+#' Unique ID(s) for population stratification(s).
 #' @param period_key Character string or vector of 
-#' Unique IDs for time periods.
-#' @param layer_key Character string or vector of 
-#' Unique IDs for geographic layers.
+#' Unique ID(s) for time period(s).
+#' @param layer_key Character string specifying an 
+#' Unique ID for a geographic layer.
 #' @param geometry Attach geometry to output?
-#' @param wide Pivot wider so that each row contains 
-#' the values of all topics within a population at a 
-#' specified time period and a geographic area?
 #' @param progress Display a progress bar?
 #'
 #' @return Data tibble containing value and standard
@@ -33,65 +30,50 @@
 #' 
 #' ha_data("POP", "H", "2014-2018", "zip")
 #' }
-ha_data <- function(topic_key, population_key, period_key, layer_key, geometry = FALSE, wide = FALSE, progress = TRUE) {
+ha_data <- function(topic_key, population_key, period_key, layer_key, geometry = FALSE, progress = TRUE) {
+  chk::chk_not_missing(topic_key, x_name = "`topic_key`")
+  chk::chk_character(topic_key)
+  chk::chk_not_missing(population_key, x_name = "`population_key`")
+  chk::chk_character(population_key)
+  chk::chk_not_missing(period_key, x_name = "`period_key`")
+  chk::chk_character(period_key)
+  chk::chk_not_missing(layer_key, x_name = "`layer_key`")
+  chk::chk_string(layer_key)
+  chk::chk_logical(geometry)
+  chk::chk_logical(progress)
+
   body <- ha_api_data_req(topic_key, population_key, period_key, layer_key) |>
     ha_req_perform() |>
     ha_resp_body("results")
-
-  output <- tibble::tibble(body) |>
-    tidyr::unnest_wider(body) |>
-    dplyr::select(c("g", "a", "p", "d", "l", "v", "se")) |>
-    dplyr::rename(
-      c(
-        "geoid" = "g",
-        "topic_key" = "a",
-        "population_key" = "p",
-        "period_key" = "d",
-        "layer_key" = "l",
-        "value" = "v",
-        "standardError" = "se"
-      )
-    )
   
-  dplyr::select(
-      output, 
-      c("topic_key", "population_key", "period_key", "layer_key")
-    ) |>
-    dplyr::distinct() |>
-    dplyr::anti_join(
-      x = tidyr::crossing(topic_key, population_key, period_key, layer_key),
-      c("topic_key", "population_key", "period_key", "layer_key")
-    ) |> purrr::pwalk(function(topic_key, population_key, period_key, layer_key) {
-      warning(paste0(
-        "Your API call has errors. No results for ",
-        "topic_key = \"", topic_key,
-        "\" population_key = \"", population_key,
-        "\" period_key = \"", period_key,
-        "\" layer_key = \"", layer_key,
-        "\"."
-      ))
-    })
+  output <- tibble::as_tibble(body[c("g", "a", "p", "d", "l", "v", "se")])
+  keys <- c("topic_key", "population_key", "period_key", "layer_key")
+  colnames(output) <- c("geoid", keys, "value", "standardError")
   
-  if (wide) {
-    output <- tidyr::pivot_wider(
-      output,
-      names_from = "topic_key",
-      values_from = c("value", "standardError"),
-      names_glue = "{topic_key}_{.value}",
-      names_vary = "slowest"
-    )
+  combinations <- expand.grid(
+    topic_key = topic_key, 
+    population_key = population_key, 
+    period_key = period_key, 
+    layer_key = layer_key
+  )
+  missing <- combinations[!interaction(combinations[keys]) %in% interaction(output[keys]),]
+  for (i in seq_len(nrow(missing))) {
+    chk::wrn(paste0(
+      "Your API call has errors. No results for ",
+      "topic_key = \"", missing$topic_key[i],
+      "\" population_key = \"", missing$population_key[i],
+      "\" period_key = \"", missing$period_key[i],
+      "\" layer_key = \"", missing$layer_key[i],
+      "\"."
+    ))
   }
+
   if (geometry) {
     layer <- ha_layer(layer_key, progress)
 
-    output <- output |>
-      dplyr::left_join(
-        dplyr::select(layer, "geoid"), 
-        "geoid"
-      ) |>
+    output <- merge(output, layer[c("geoid")], by = "geoid", all.x = TRUE) |>
       sf::st_as_sf()
   }
-
 
   output
 }
