@@ -1,7 +1,7 @@
 Package: healthatlas
 Title: Explore and Import 'Metopio' Health Atlas Data and Spatial
         Layers
-Version: 0.1.1
+Version: 0.2.0
 Authors@R: 
     person("Ryan", "Zomorrodi", , "rzomor2@uic.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0009-0003-6417-5985"))
@@ -15,6 +15,7 @@ Description: Allows for painless use of the 'Metopio' health atlas APIs
 License: MIT + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.3.2
+Depends: R (>= 4.1.0)
 Imports: curl, httr2, tibble, sf, chk
 Suggests: dplyr, ggplot2, knitr, purrr, rmarkdown, testthat (>= 3.0.0)
 VignetteBuilder: knitr
@@ -23,9 +24,9 @@ URL: https://ryanzomorrodi.github.io/healthatlas/,
 Config/testthat/edition: 3
 BugReports: https://github.com/ryanzomorrodi/healthatlas/issues
 NeedsCompilation: no
-Packaged: 2024-12-18 00:48:34 UTC; user
+Packaged: 2025-03-01 07:18:04 UTC; user
 Author: Ryan Zomorrodi [aut, cre, cph]
     (<https://orcid.org/0009-0003-6417-5985>)
 Maintainer: Ryan Zomorrodi <rzomor2@uic.edu>
 Repository: CRAN
-Date/Publication: 2024-12-18 01:20:02 UTC
+Date/Publication: 2025-03-01 23:20:02 UTC

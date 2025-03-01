@@ -17,6 +17,25 @@ ha_get()
 topics <- ha_topics(progress = FALSE)
 topics
 
+## ----include = FALSE----------------------------------------------------------
+library(dplyr)
+
+## -----------------------------------------------------------------------------
+library(dplyr)
+library(purrr)
+
+# filter by dataset
+topics %>%
+  filter(map_lgl(topic_datasets, ~ "healthy-chicago-survey" %in% .x$key))
+
+# filter by subcategory
+topics %>%
+  filter(map_lgl(topic_subcategories, ~ "diet-exercise" %in% .x$key))
+
+# filter by keyword
+topics %>%
+  filter(map_lgl(topic_keywords, ~ "activity" %in% .x))
+
 ## -----------------------------------------------------------------------------
 subcategories <- ha_subcategories()
 subcategories
@@ -52,7 +71,7 @@ library(purrr)
 
 # creating a table of data I want
 metadata <- tribble(
-  ~ topic_key, ~ population_key, ~ period_key, ~ layer_key,
+  ~topic_key, ~population_key, ~period_key, ~layer_key,
   "POP",       "",               "2017-2021",  "neighborhood",
   "HCSFVAP",   "",               "2020-2021",  "neighborhood",
   "UMP",       "H",              "2017-2021",  "neighborhood",

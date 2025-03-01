@@ -22,6 +22,7 @@ ha_req <- function(endpoint) {
     httr2::req_user_agent("healthatlas R package") |>
     httr2::req_url_path_append(endpoint) |>
     httr2::req_url_query(format = "json") |>
+    httr2::req_cache(path = tempdir()) |>
     httr2::req_error(body = \(x) "Your API call has errors. No Results.")
 }
 
@@ -31,14 +32,14 @@ ha_req_perform_iterative <- function(req, progress = TRUE) {
     next_req = httr2::iterate_with_offset(
       param_name = "offset",
       start = 0,
-      offset = 20,
+      offset = 1000,
       resp_pages = function(resp) {
         count <- httr2::resp_body_json(resp)[["count"]]
 
         if (count == 0) {
           chk::abort_chk("Your API call has errors. No Results.")
         }
-        ceiling(count / 20)
+        ceiling(count / 1000)
       }
     ),
     max_reqs = Inf,
