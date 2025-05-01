@@ -1,12 +1,12 @@
 Package: healthatlas
 Title: Explore and Import 'Metopio' Health Atlas Data and Spatial
         Layers
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     person("Ryan", "Zomorrodi", , "rzomor2@uic.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0009-0003-6417-5985"))
 Description: Allows for painless use of the 'Metopio' health atlas APIs
-    <https://metopio.com/how-it-works/atlas/> to explore and import data.
+    <https://metopio.com/health-atlas> to explore and import data.
     'Metopio' health atlases store open public health data. See what topics
     (or indicators) are available among specific populations, periods, and
     geographic layers. Download relevant data along with geographic 
@@ -24,9 +24,9 @@ URL: https://ryanzomorrodi.github.io/healthatlas/,
 Config/testthat/edition: 3
 BugReports: https://github.com/ryanzomorrodi/healthatlas/issues
 NeedsCompilation: no
-Packaged: 2025-03-01 07:18:04 UTC; user
-Author: Ryan Zomorrodi [aut, cre, cph]
-    (<https://orcid.org/0009-0003-6417-5985>)
+Packaged: 2025-05-01 23:07:59 UTC; user
+Author: Ryan Zomorrodi [aut, cre, cph] (ORCID:
+    <https://orcid.org/0009-0003-6417-5985>)
 Maintainer: Ryan Zomorrodi <rzomor2@uic.edu>
 Repository: CRAN
-Date/Publication: 2025-03-01 23:20:02 UTC
+Date/Publication: 2025-05-01 23:20:01 UTC

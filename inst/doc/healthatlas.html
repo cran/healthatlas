@@ -358,7 +358,7 @@ column here is the <code>topic_key</code>. An individual
 functions.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>topics <span class="ot">&lt;-</span> <span class="fu">ha_topics</span>(<span class="at">progress =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>topics</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; # A tibble: 408 × 7</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; # A tibble: 410 × 7</span></span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt;    topic_name             topic_key topic_description topic_units topic_keywords</span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;       &lt;list&gt;        </span></span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt;  1 9th grade education r… EDA       Residents 25 or … % of resid… &lt;chr [2]&gt;     </span></span>
@@ -371,7 +371,7 @@ functions.</p>
 <span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt;  8 Adult binge drinking   HCSBD     Number of adults… count of a… &lt;chr [1]&gt;     </span></span>
 <span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt;  9 Adult binge drinking … HCSBDP    Percent of adult… % of adults &lt;chr [1]&gt;     </span></span>
 <span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; 10 Adult diabetes         HCSDIA    Number of adults… count of a… &lt;chr [1]&gt;     </span></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt; # ℹ 398 more rows</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt; # ℹ 400 more rows</span></span>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; # ℹ 2 more variables: topic_datasets &lt;list&gt;, topic_subcategories &lt;list&gt;</span></span></code></pre></div>
 <p><strong>Note:</strong> topics can be derived from multiple datasets
 or belong to multiple subcategories or keywords. Therefore, these
@@ -558,16 +558,16 @@ population, and period requested.</p>
 <span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt; # A tibble: 616 × 7</span></span>
 <span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#&gt;    geoid      topic_key population_key period_key layer_key  value standardError</span></span>
 <span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;         &lt;dbl&gt;</span></span>
-<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="co">#&gt;  1 1714000-14 UMP       &quot;&quot;             2017-2021  neighborh…  6.67         1.46 </span></span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">#&gt;  2 1714000-18 UMP       &quot;&quot;             2017-2021  neighborh…  5.36         2.10 </span></span>
-<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co">#&gt;  3 1714000-2  UMP       &quot;&quot;             2017-2021  neighborh…  6.66         1.11 </span></span>
-<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="co">#&gt;  4 1714000-24 UMP       &quot;&quot;             2017-2021  neighborh…  3.50         0.608</span></span>
-<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="co">#&gt;  5 1714000-43 UMP       &quot;&quot;             2017-2021  neighborh… 17.0          1.95 </span></span>
-<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="co">#&gt;  6 1714000-45 UMP       &quot;&quot;             2017-2021  neighborh… 13.5          5.24 </span></span>
-<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="co">#&gt;  7 1714000-47 UMP       &quot;&quot;             2017-2021  neighborh… 21.5          8.32 </span></span>
-<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="co">#&gt;  8 1714000-49 UMP       &quot;&quot;             2017-2021  neighborh… 18.7          2.10 </span></span>
-<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="co">#&gt;  9 1714000-52 UMP       &quot;&quot;             2017-2021  neighborh…  8.02         1.69 </span></span>
-<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="co">#&gt; 10 1714000-6  UMP       &quot;&quot;             2017-2021  neighborh…  3.86         0.580</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="co">#&gt;  1 1714000-14 POP       &quot;&quot;             2017-2021  neighbor… 4.88e4            NA</span></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">#&gt;  2 1714000-18 POP       &quot;&quot;             2017-2021  neighbor… 1.38e4            NA</span></span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co">#&gt;  3 1714000-2  POP       &quot;&quot;             2017-2021  neighbor… 7.99e4            NA</span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="co">#&gt;  4 1714000-24 POP       &quot;&quot;             2017-2021  neighbor… 8.69e4            NA</span></span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="co">#&gt;  5 1714000-43 POP       &quot;&quot;             2017-2021  neighbor… 5.27e4            NA</span></span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="co">#&gt;  6 1714000-45 POP       &quot;&quot;             2017-2021  neighbor… 9.65e3            NA</span></span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="co">#&gt;  7 1714000-47 POP       &quot;&quot;             2017-2021  neighbor… 2.64e3            NA</span></span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="co">#&gt;  8 1714000-49 POP       &quot;&quot;             2017-2021  neighbor… 3.93e4            NA</span></span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="co">#&gt;  9 1714000-52 POP       &quot;&quot;             2017-2021  neighbor… 2.45e4            NA</span></span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="co">#&gt; 10 1714000-6  POP       &quot;&quot;             2017-2021  neighbor… 1.03e5            NA</span></span>
 <span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a><span class="co">#&gt; # ℹ 606 more rows</span></span></code></pre></div>
 <p>If you want to mix and match topics, populations, years, or layers of
 data, I recommend creating a table of all the datasets you want, and
@@ -589,16 +589,16 @@ data, I recommend creating a table of all the datasets you want, and
 <span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co">#&gt; # A tibble: 77 × 7</span></span>
 <span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co">#&gt;    geoid      topic_key population_key period_key layer_key  value standardError</span></span>
 <span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt; &lt;lgl&gt;        </span></span>
-<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#&gt;  1 1714000-14 POP       &quot;&quot;             2017-2021  neighbor… 4.88e4 NA           </span></span>
-<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#&gt;  2 1714000-18 POP       &quot;&quot;             2017-2021  neighbor… 1.38e4 NA           </span></span>
-<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co">#&gt;  3 1714000-2  POP       &quot;&quot;             2017-2021  neighbor… 7.99e4 NA           </span></span>
-<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#&gt;  4 1714000-24 POP       &quot;&quot;             2017-2021  neighbor… 8.69e4 NA           </span></span>
-<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co">#&gt;  5 1714000-43 POP       &quot;&quot;             2017-2021  neighbor… 5.27e4 NA           </span></span>
-<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co">#&gt;  6 1714000-45 POP       &quot;&quot;             2017-2021  neighbor… 9.65e3 NA           </span></span>
-<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="co">#&gt;  7 1714000-47 POP       &quot;&quot;             2017-2021  neighbor… 2.64e3 NA           </span></span>
-<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="co">#&gt;  8 1714000-49 POP       &quot;&quot;             2017-2021  neighbor… 3.93e4 NA           </span></span>
-<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="co">#&gt;  9 1714000-52 POP       &quot;&quot;             2017-2021  neighbor… 2.45e4 NA           </span></span>
-<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co">#&gt; 10 1714000-6  POP       &quot;&quot;             2017-2021  neighbor… 1.03e5 NA           </span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#&gt;  1 1714000-35 POP       &quot;&quot;             2017-2021  neighbor… 21276. NA           </span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#&gt;  2 1714000-36 POP       &quot;&quot;             2017-2021  neighbor…  7417. NA           </span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co">#&gt;  3 1714000-37 POP       &quot;&quot;             2017-2021  neighbor…  2280. NA           </span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#&gt;  4 1714000-38 POP       &quot;&quot;             2017-2021  neighbor… 24397. NA           </span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co">#&gt;  5 1714000-39 POP       &quot;&quot;             2017-2021  neighbor… 18503. NA           </span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co">#&gt;  6 1714000-4  POP       &quot;&quot;             2017-2021  neighbor… 42252. NA           </span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="co">#&gt;  7 1714000-40 POP       &quot;&quot;             2017-2021  neighbor… 11608. NA           </span></span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="co">#&gt;  8 1714000-41 POP       &quot;&quot;             2017-2021  neighbor… 28802. NA           </span></span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="co">#&gt;  9 1714000-42 POP       &quot;&quot;             2017-2021  neighbor… 24362. NA           </span></span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co">#&gt; 10 1714000-1  POP       &quot;&quot;             2017-2021  neighbor… 55627. NA           </span></span>
 <span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a><span class="co">#&gt; # ℹ 67 more rows</span></span>
 <span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
@@ -621,16 +621,16 @@ data, I recommend creating a table of all the datasets you want, and
 <span id="cb11-47"><a href="#cb11-47" tabindex="-1"></a><span class="co">#&gt; # A tibble: 77 × 7</span></span>
 <span id="cb11-48"><a href="#cb11-48" tabindex="-1"></a><span class="co">#&gt;    geoid     topic_key population_key period_key layer_key   value standardError</span></span>
 <span id="cb11-49"><a href="#cb11-49" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;         &lt;dbl&gt;</span></span>
-<span id="cb11-50"><a href="#cb11-50" tabindex="-1"></a><span class="co">#&gt;  1 1714000-… UMP       H              2017-2021  neighbor… 5.95e+0          1.54</span></span>
-<span id="cb11-51"><a href="#cb11-51" tabindex="-1"></a><span class="co">#&gt;  2 1714000-… UMP       H              2017-2021  neighbor… 3.13e+0          1.73</span></span>
-<span id="cb11-52"><a href="#cb11-52" tabindex="-1"></a><span class="co">#&gt;  3 1714000-2 UMP       H              2017-2021  neighbor… 4.21e+0          4.09</span></span>
-<span id="cb11-53"><a href="#cb11-53" tabindex="-1"></a><span class="co">#&gt;  4 1714000-… UMP       H              2017-2021  neighbor… 3.48e+0          1.86</span></span>
-<span id="cb11-54"><a href="#cb11-54" tabindex="-1"></a><span class="co">#&gt;  5 1714000-… UMP       H              2017-2021  neighbor… 1.90e+1         27.5 </span></span>
-<span id="cb11-55"><a href="#cb11-55" tabindex="-1"></a><span class="co">#&gt;  6 1714000-… UMP       H              2017-2021  neighbor… 1.51e-1        126.  </span></span>
-<span id="cb11-56"><a href="#cb11-56" tabindex="-1"></a><span class="co">#&gt;  7 1714000-… UMP       H              2017-2021  neighbor… 9.29e-3         32.9 </span></span>
-<span id="cb11-57"><a href="#cb11-57" tabindex="-1"></a><span class="co">#&gt;  8 1714000-… UMP       H              2017-2021  neighbor… 3.71e+1         23.6 </span></span>
-<span id="cb11-58"><a href="#cb11-58" tabindex="-1"></a><span class="co">#&gt;  9 1714000-… UMP       H              2017-2021  neighbor… 7.80e+0          1.67</span></span>
-<span id="cb11-59"><a href="#cb11-59" tabindex="-1"></a><span class="co">#&gt; 10 1714000-6 UMP       H              2017-2021  neighbor… 4.37e+0          3.21</span></span>
+<span id="cb11-50"><a href="#cb11-50" tabindex="-1"></a><span class="co">#&gt;  1 1714000-… UMP       H              2017-2021  neighbor… 20.2            22.8 </span></span>
+<span id="cb11-51"><a href="#cb11-51" tabindex="-1"></a><span class="co">#&gt;  2 1714000-… UMP       H              2017-2021  neighbor…  0.0239         48.0 </span></span>
+<span id="cb11-52"><a href="#cb11-52" tabindex="-1"></a><span class="co">#&gt;  3 1714000-… UMP       H              2017-2021  neighbor…  6.60           21.8 </span></span>
+<span id="cb11-53"><a href="#cb11-53" tabindex="-1"></a><span class="co">#&gt;  4 1714000-… UMP       H              2017-2021  neighbor…  9.47           30.5 </span></span>
+<span id="cb11-54"><a href="#cb11-54" tabindex="-1"></a><span class="co">#&gt;  5 1714000-… UMP       H              2017-2021  neighbor… 12.2            28.4 </span></span>
+<span id="cb11-55"><a href="#cb11-55" tabindex="-1"></a><span class="co">#&gt;  6 1714000-4 UMP       H              2017-2021  neighbor…  8.13            3.35</span></span>
+<span id="cb11-56"><a href="#cb11-56" tabindex="-1"></a><span class="co">#&gt;  7 1714000-… UMP       H              2017-2021  neighbor… 29.8            52.9 </span></span>
+<span id="cb11-57"><a href="#cb11-57" tabindex="-1"></a><span class="co">#&gt;  8 1714000-… UMP       H              2017-2021  neighbor…  6.42           10.5 </span></span>
+<span id="cb11-58"><a href="#cb11-58" tabindex="-1"></a><span class="co">#&gt;  9 1714000-… UMP       H              2017-2021  neighbor…  3.37           37.6 </span></span>
+<span id="cb11-59"><a href="#cb11-59" tabindex="-1"></a><span class="co">#&gt; 10 1714000-1 UMP       H              2017-2021  neighbor…  5.19            4.38</span></span>
 <span id="cb11-60"><a href="#cb11-60" tabindex="-1"></a><span class="co">#&gt; # ℹ 67 more rows</span></span></code></pre></div>
 </div>
 <div id="import-spatial-data" class="section level2">
