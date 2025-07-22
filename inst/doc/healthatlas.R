@@ -4,6 +4,10 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+## ----include=FALSE------------------------------------------------------------
+library(httptest2)
+start_vignette("healthatlas")
+
 ## ----setup--------------------------------------------------------------------
 library(healthatlas)
 
@@ -71,10 +75,22 @@ library(purrr)
 
 # creating a table of data I want
 metadata <- tribble(
-  ~topic_key, ~population_key, ~period_key, ~layer_key,
-  "POP",       "",               "2017-2021",  "neighborhood",
-  "HCSFVAP",   "",               "2020-2021",  "neighborhood",
-  "UMP",       "H",              "2017-2021",  "neighborhood",
+  ~topic_key,
+  ~population_key,
+  ~period_key,
+  ~layer_key,
+  "POP",
+  "",
+  "2017-2021",
+  "neighborhood",
+  "HCSFVAP",
+  "",
+  "2020-2021",
+  "neighborhood",
+  "UMP",
+  "H",
+  "2017-2021",
+  "neighborhood",
 )
 
 metadata %>%
@@ -121,4 +137,7 @@ grocery_stores <- ha_point_layer("7d9caf3c-75e6-4382-8c97-069696a3efbf")
 ## -----------------------------------------------------------------------------
 plot +
   geom_sf(data = grocery_stores, size = 0.5)
+
+## ----include=FALSE------------------------------------------------------------
+end_vignette()
 
