@@ -1,143 +1,125 @@
 ## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = identical(Sys.getenv("NOT_CRAN"), "true")
 )
-
-## ----include=FALSE------------------------------------------------------------
-library(httptest2)
-start_vignette("healthatlas")
 
 ## ----setup--------------------------------------------------------------------
-library(healthatlas)
+# library(healthatlas)
 
 ## -----------------------------------------------------------------------------
-ha_set("chicagohealthatlas.org")
+# ha_set("chicagohealthatlas.org")
 
 ## -----------------------------------------------------------------------------
-ha_get()
+# ha_get()
 
 ## -----------------------------------------------------------------------------
-topics <- ha_topics(progress = FALSE)
-topics
+# topics <- ha_topics(progress = FALSE)
+# topics
 
 ## ----include = FALSE----------------------------------------------------------
-library(dplyr)
+# library(dplyr)
 
 ## -----------------------------------------------------------------------------
-library(dplyr)
-library(purrr)
-
-# filter by dataset
-topics %>%
-  filter(map_lgl(topic_datasets, ~ "healthy-chicago-survey" %in% .x$key))
-
-# filter by subcategory
-topics %>%
-  filter(map_lgl(topic_subcategories, ~ "diet-exercise" %in% .x$key))
-
-# filter by keyword
-topics %>%
-  filter(map_lgl(topic_keywords, ~ "activity" %in% .x))
-
-## -----------------------------------------------------------------------------
-subcategories <- ha_subcategories()
-subcategories
+# library(dplyr)
+# library(purrr)
+# 
+# # filter by dataset
+# topics %>%
+#   filter(map_lgl(topic_datasets, ~ "healthy-chicago-survey" %in% .x$key))
+# 
+# # filter by subcategory
+# topics %>%
+#   filter(map_lgl(topic_subcategories, ~ "diet-exercise" %in% .x$key))
+# 
+# # filter by keyword
+# topics %>%
+#   filter(map_lgl(topic_keywords, ~ "activity" %in% .x))
 
 ## -----------------------------------------------------------------------------
-ha_topics("diet-exercise")
+# subcategories <- ha_subcategories()
+# subcategories
 
 ## -----------------------------------------------------------------------------
-coverage <- ha_coverage("HCSFVAP", progress = FALSE)
-coverage
+# ha_topics("diet-exercise")
 
 ## -----------------------------------------------------------------------------
-ease_of_access <- ha_data(
-  topic_key = "HCSFVAP",
-  population_key = "",
-  period_key = "2022-2023",
-  layer_key = "neighborhood"
-)
-ease_of_access
+# coverage <- ha_coverage("HCSFVAP", progress = FALSE)
+# coverage
 
 ## -----------------------------------------------------------------------------
-combinations_of_data <- ha_data(
-  topic_key = c("POP", "UMP"),
-  population_key = c("", "H"),
-  period_key = c("2017-2021", "2018-2022", "invalid"),
-  layer_key = "neighborhood"
-)
-combinations_of_data
+# ease_of_access <- ha_data(
+#   topic_key = "HCSFVAP",
+#   population_key = "",
+#   period_key = "2022-2023",
+#   layer_key = "neighborhood"
+# )
+# ease_of_access
 
 ## -----------------------------------------------------------------------------
-library(tibble)
-library(purrr)
-
-# creating a table of data I want
-metadata <- tribble(
-  ~topic_key,
-  ~population_key,
-  ~period_key,
-  ~layer_key,
-  "POP",
-  "",
-  "2017-2021",
-  "neighborhood",
-  "HCSFVAP",
-  "",
-  "2020-2021",
-  "neighborhood",
-  "UMP",
-  "H",
-  "2017-2021",
-  "neighborhood",
-)
-
-metadata %>%
-  pmap(ha_data)
+# combinations_of_data <- ha_data(
+#   topic_key = c("POP", "UMP"),
+#   population_key = c("", "H"),
+#   period_key = c("2017-2021", "2018-2022", "invalid"),
+#   layer_key = "neighborhood"
+# )
+# combinations_of_data
 
 ## -----------------------------------------------------------------------------
-layers <- ha_layers()
-layers
+# library(tibble)
+# library(purrr)
+# 
+# # creating a table of data I want
+# metadata <- tribble(
+#   ~topic_key , ~population_key , ~period_key , ~layer_key     ,
+#   "POP"      , ""              , "2017-2021" , "neighborhood" ,
+#   "HCSFVAP"  , ""              , "2020-2021" , "neighborhood" ,
+#   "UMP"      , "H"             , "2017-2021" , "neighborhood" ,
+# )
+# 
+# metadata %>%
+#   pmap(ha_data)
 
 ## -----------------------------------------------------------------------------
-community_areas <- ha_layer("neighborhood")
-community_areas
+# layers <- ha_layers()
+# layers
 
 ## -----------------------------------------------------------------------------
-ease_of_access <- ha_data(
-  topic_key = "HCSFVAP",
-  population_key = "",
-  period_key = "2022-2023",
-  layer_key = "neighborhood",
-  geometry = TRUE
-)
-ease_of_access
+# community_areas <- ha_layer("neighborhood")
+# community_areas
 
 ## -----------------------------------------------------------------------------
-library(ggplot2)
-
-plot <- ggplot(ease_of_access) +
-  geom_sf(aes(fill = value), alpha = 0.7) +
-  scale_fill_distiller(palette = "GnBu", direction = 1) +
-  labs(
-    title = "Easy Access to Fruits and Vegetables within Chicago",
-    fill = "Percent of adults who reported\nthat it is very easy for them to\nget fresh fruits and vegetables."
-  ) +
-  theme_minimal()
-plot
+# ease_of_access <- ha_data(
+#   topic_key = "HCSFVAP",
+#   population_key = "",
+#   period_key = "2022-2023",
+#   layer_key = "neighborhood",
+#   geometry = TRUE
+# )
+# ease_of_access
 
 ## -----------------------------------------------------------------------------
-point_layers <- ha_point_layers()
-point_layers
+# library(ggplot2)
+# 
+# plot <- ggplot(ease_of_access) +
+#   geom_sf(aes(fill = value), alpha = 0.7) +
+#   scale_fill_distiller(palette = "GnBu", direction = 1) +
+#   labs(
+#     title = "Easy Access to Fruits and Vegetables within Chicago",
+#     fill = "Percent of adults who reported\nthat it is very easy for them to\nget fresh fruits and vegetables."
+#   ) +
+#   theme_minimal()
+# plot
 
 ## -----------------------------------------------------------------------------
-grocery_stores <- ha_point_layer("7d9caf3c-75e6-4382-8c97-069696a3efbf")
+# point_layers <- ha_point_layers()
+# point_layers
 
 ## -----------------------------------------------------------------------------
-plot +
-  geom_sf(data = grocery_stores, size = 0.5)
+# grocery_stores <- ha_point_layer("7d9caf3c-75e6-4382-8c97-069696a3efbf")
 
-## ----include=FALSE------------------------------------------------------------
-end_vignette()
+## -----------------------------------------------------------------------------
+# plot +
+#   geom_sf(data = grocery_stores, size = 0.5)
 
